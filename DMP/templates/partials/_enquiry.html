@@ -1,0 +1,79 @@
+
+<div class="container">
+<div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Contact to Know More</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md col-lg">
+                <div class="property-contact">
+                  <form class="form-a contactForm" action="{% url 'contact_specific' %}" method="POST" role="form">
+                  {% csrf_token %}
+                  {% if 'listings' in request.path %}
+                    <input type="hidden" name="prop_Id" value="{{listing.prop_Id}}"/>
+                    <input type="hidden" name="prop_address" value="{{listing.location}}"/>
+                    <input type="hidden" name="prop" value="{{listing.name}}"/>
+                  {% elif 'buy' in request.path %}
+                    <input type="hidden" name="prop_Id" value="{{buy.prop_Id}}"/>
+                    <input type="hidden" name="prop_address" value="{{buy.location}}"/>
+                    <input type="hidden" name="prop" value="{{buy.name}}"/>
+                  {% elif 'rentals' in request.path %}
+                    <input type="hidden" name="prop_Id" value="{{rental.prop_Id}}"/>
+                    <input type="hidden" name="prop_address" value="{{rental.location}}"/>
+                    <input type="hidden" name="prop" value="{{rental.name}}"/>
+                  {% endif %}
+
+                    {%if user.is_authenticated %}
+                      <input type="hidden" name="user_id" value="{{user.id}}"/>
+                      {%else%}
+                      <input type="hidden" name="user_id" value="0"/>
+                      {%endif%}
+                    <div class="row">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="text" name="name" class="form-control form-control-lg form-control-a" {% if user.is_authenticated %}value="{{user.username}}"{% else %}placeholder="Your Name"{% endif %}>
+                      <div class="validation"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input name="email" type="email" class="form-control form-control-lg form-control-a" {% if user.is_authenticated %} value="{{user.email}}"{% else %}placeholder="Your Email"{% endif %} data-rule="email" data-msg="Please enter a valid email">
+                        <div class="validation"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <input type="text" name="phone" class="form-control form-control-lg form-control-a" placeholder="Your Phone">
+                        <div class="validation"></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                        <input name="locality" type="text" class="form-control form-control-lg form-control-a" placeholder="Your Locality">
+                        <div class="validation"></div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Your Subject">
+                      <div class="validation"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45"
+                            rows="8" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="submit" class="btn btn-a">Send Message</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

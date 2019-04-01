@@ -1,0 +1,58 @@
+{% load static %}
+<link href="{% static 'lib/font-awesome/css/all.css' %}" rel="stylesheet">
+<link href="{% static 'lib/font-awesome/css/all.min.css' %}" rel="stylesheet">
+<!-- Top Bar -->
+<section id="top-bar" class="p-2  fluid expand">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-4">
+        <!--Logo-->
+        </div>
+        <div class="col-md-12 col-sm-12 col-lg-4 text-center">
+          <a class="text-brand " href="{% url 'index' %}">Deamante<span class="color-b">Properties</span></a>
+        </div>
+          <!--Log-in-->
+        {% if user.is_authenticated %}
+          <div
+          {% if 'dashboard' in request.path %}
+            class="active col-sm-6 col-md-6 col-lg-2 align-content-center text-center"
+          {% else %}
+            class="col-sm-6 col-md-6 col-lg-2 align-content-center text-center"
+          {% endif %}
+          >
+            <a href="{% url 'dashboard' %}">
+              Welcome {{ user.username }} (Dashboard)</a>
+          </div>
+          <div class="list-inline-item col-sm-6 col-md-6 col-lg-2 align-content-center justify-content-center align-middle text-center">
+            <a href="javascript:{document.getElementById('logout').submit()}" class="align-middle">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+              {% csrf_token %}
+              <input type="hidden">
+            </form>
+        {% else %}
+          <div
+          {% if 'register' in request.path %}
+            class="active mr-auto ml-auto col-sm-6 col-md-6 col-lg-2"
+          {% else %}
+            class="mr-auto ml-auto col-sm-6 col-md-6 col-lg-2"
+          {% endif %}
+          >
+            <a href="{% url 'register' %}">
+              <i class="fas fa-user-plus"></i> Register</a>
+          </div>
+          <div
+          {% if 'login' in request.path %}
+            class="active mr-auto ml-auto col-sm-6 col-lg-2"
+          {% else %}
+            class="mr-auto ml-auto col-sm-6 col-lg-2"
+          {% endif %}
+          >
+            <a href="{% url 'login' %}">
+              <i class="fas fa-sign-in-alt"></i>
+            Login</a>
+          </div>
+        {% endif %}
+        </div>
+      </div>  
+  </section>

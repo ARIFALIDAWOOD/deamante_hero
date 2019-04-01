@@ -1,0 +1,20 @@
+{% if user.is_authenticated %}
+  <div class="container align-items-center col-lg-4 col-sm-1">
+      <div class="align-items-center row" style="display:inline-block">
+        <a href="{% url 'dashboard' %}"><span class="price-a" style="color:#000000;">WELCOME {{user.username}}</span></a>
+        <a href="{% url 'dashboard' %}"><span class="price-a" style="color:#000000;">DASHBOARD</span></a>
+        <a href="javascript:{document.getElementById('logout').submit()}"><span class="price-a" style="color:#000000;"><i class="fas fa-sign-out-alt"></i> LOGOUT</span></a>
+        <form action="{% url 'logout'%}" method="POST" id="logout">
+        {% csrf_token %}
+        <input type="hidden">
+        </form>
+        </div>
+    </div>
+{% else %}
+  <div class="container align-items-center col-lg-3 col-md-3 col-sm-3">
+      <div class="align-items-center row" style="display:inline-block">
+        <a href="{% url 'register' %}"><span class="price-a" style="color:#000000;"><i class="fas fa-user-plus"></i>REGISTER NOW</span></a>
+        <a href="{% url 'login' %}"><span class="price-a" style="color:#000000;"><i class="fas fa-sign-in-alt"></i>LOGIN</span></a>
+      </div>
+  </div>
+{% endif %}

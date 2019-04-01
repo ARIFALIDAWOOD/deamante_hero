@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %} | User Dashboard {% endblock title%}
+
+{% block content %}
+<section>
+ <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Dashboard - Welcome {{ user.username }}</h1>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- Alerts -->
+  {% include 'partials/_alerts.html' %}
+  <!--General Enquiries -->
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {% if contacts %}
+            <p>Here are your general enquiries</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for contact in contacts %}
+                  <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>
+                     {{ contact.contact_date }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>You have not made any inquiries</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+<!--Specific Enquiries -->
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {% if specific_contacts %}
+            <p>Here are the property listings that you have inquired about</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Property</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for contact in specific_contacts %}
+                  <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.prop }}</td>
+                    <td>  {{ contact.contact_date }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>You have not made any specific inquiry</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+  <!--a class="btn btn-light" href="{% url 'listing' contact.listing_id %}">View Listing</a-->
