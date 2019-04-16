@@ -1,0 +1,59 @@
+{% load static %}
+<!-- Top Bar -->
+<section id="top-bar" class="p-2  fluid expand">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 d-sm-block d-md-block d-lg-none d-xl-none p-0 m-0 mx-0">
+        <img src="{% static 'img/apple-touch-icon.png' %}" class="logo1" style="display:block;margin-right:auto;margin-left: auto;">
+        </div>
+        <div class="col-md-12 col-sm-12 col-lg-4">
+        <img src="{% static 'img/apple-touch-icon.png' %}" class="logo d-none  d-lg-block d-xl-block" style="display:block;margin-right: 0;margin-left: auto;">
+        </div>
+        <div class="col-md-12 col-lg-4 text-center d-none  d-lg-block d-xl-block">
+          <a class="text-brand " href="{% url 'index' %}">Deamante<span class="color-b">Properties</span></a>
+        </div>
+          <!--Log-in-->
+        {% if user.is_authenticated %}
+          <div
+          {% if 'dashboard' in request.path %}
+            class="active col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle"
+          {% else %}
+            class="col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle"
+          {% endif %}
+          >
+            <a href="{% url 'dashboard' %}">
+              Welcome {{ user.username }} (Dashboard)</a>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle">
+            <a href="javascript:{document.getElementById('logout').submit()}" class="col-sm-6 col-md-6 col-lg-2 align-content-center text-center">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+              {% csrf_token %}
+              <input type="hidden">
+            </form>
+        {% else %}
+          <div
+          {% if 'register' in request.path %}
+            class="active col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle"
+          {% else %}
+            class="col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle"
+          {% endif %}
+          >
+            <a href="{% url 'register' %}">
+              <i class="fas fa-user-plus"></i> Register</a>
+          </div>
+          <div
+          {% if 'login' in request.path %}
+            class="active col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle"
+          {% else %}
+            class="col-sm-6 col-md-6 col-lg-2 align-content-center text-center align-middle"
+          {% endif %}
+          >
+            <a href="{% url 'login' %}">
+              <i class="fas fa-sign-in-alt"></i>
+            Login</a>
+          </div>
+        {% endif %}
+        </div>
+      </div>  
+  </section>

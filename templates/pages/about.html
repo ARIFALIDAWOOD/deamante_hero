@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">We Build Fantastic Homes</h1>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                About
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ About Star /-->
+  <section class="section-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="about-img-box">
+            {% for abt in about %}
+            <img src="{{abt.display_img.url}}" alt="" class="img-fluid">
+            {% endfor %}
+          </div>
+          <div class="sinse-box">
+            <h3 class="sinse-title">Deamante Properties
+              <span><p>Living Spaces You'll Fall in Love With</p></span>
+          </div>
+        </div>
+        <div class="col-md-12 section-t8">
+          <div class="row">
+            <div class="col-md-6 col-lg-5">
+              {% for abt in about %}
+              <img src="{{abt.ceo_img.url}}" alt="" class="img-fluid">
+              {% endfor %}
+            </div>
+            <div class="col-lg-2  d-none d-lg-block">
+              <div class="title-vertical d-flex justify-content-start">
+                <span>Deamante Properties Exclusive</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-5 section-md-t3">
+              <div class="title-box-d">
+                <h3 class="title-d">A Word from Our
+                  <br>
+                  <span class="color-d">CEO</span> </h3>
+              </div>
+              <p class="color-text-a justify-content  ">
+                Deamante Properties is an exclusive customer driven property development firm that has been established by <strong>Architect Zaid Sait.</strong> With passion for design and in-depth knowledge of Bangalore’s real-estate demography, Demante Properties caters to resident and emigrating population who are in search of a home.
+              </p>
+              <p class="color-text-a">
+                We understand that our customer is either home buyer or an investor looking for rental incomes. For this we indulge in intense filtering of various properties that come our way for development. Only the most investment worthy land is finalized for development after verifying all legal and other formalities. After this, we make sure that the property has an upscale and posh design home worthy of the buyers investment.
+              </p>
+              <p class="color-text-a">
+                Our vision is to establish a firm that shall be known for its good quality construction, practical designs for day to day living and cost effective investments.
+                Demante Properties treasures each project like solitaire diamond jewelry. Unique, yet worthy of its shine, we builds homes that will make you smile.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ About End /-->
+
+   <!--/ Team Star /-->
+  <section class="section-agents section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Meet Our Team</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% for emp in employee %}
+  
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card-box-d">
+            <div class="card-img-d">
+              <img src="{{emp.display_Image.url}}" alt="" class="img-d img-fluid">
+            </div>
+            <div class="card-overlay card-overlay-hover">
+              <div class="card-header-d">
+                <div class="card-title-d align-self-center">
+                  <h3 class="title-d">
+                    <a href="#" class="link-two">{{emp.First_name}}
+                      <br> {{emp.Last_name}}</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="card-body-d">
+                <p class="content-d color-text-a">
+                  {{emp.designation}}
+                </p>
+                <div class="info-agents color-a">
+                  <p>
+                    <strong>Phone: </strong> +91 {{emp.phone}}</p>
+                  <p>
+                    <strong>Email: </strong> {{emp.email}}</p>
+                </div>
+              </div>
+              <div class="card-footer-d">
+                <div class="socials-footer d-flex justify-content-center">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+  
+  <!--/ Team End /--> 
+  
+  {% endfor %}
+    </div>
+  </section>
+ 
+  
+
+{% endblock content %}

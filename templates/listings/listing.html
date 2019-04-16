@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+| {{object.name}}
+{% endblock title %}
+{% block content %}
+
+<!--/ Intro Single star Ongoing/-->
+
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">{{object.name}}</h1>
+          <span class="color-text-a">{{object.address}}</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="{% url 'all' %}">Properties</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{object.name}}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+    <!--/ Intro Single End /-->
+
+  <!--/ Property Single Star /-->
+<section class="property-single nav-arrow-b">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+        <div class="carousel-item-b">
+          <img src="{{object.img_1.url}}" alt="">
+        </div>
+        <div class="carousel-item-b">
+          <img src="{{object.img_2.url}}" alt="">
+        </div>
+        <div class="carousel-item-b">
+          <img src="{{object.img_3.url}}" alt="">
+        </div>
+        {% if object.img_4 %}
+        <div class="carousel-item-b">
+          <img src="{{object.img_4.url}}" alt="">
+        </div>
+        {% endif %}
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-md-5 col-lg-4">
+          <div class="property-price d-flex justify-content-center foo">
+            <div class="card-header-c d-flex">
+              <div class="card-box-ico">
+                <span class="ion-money">₹</span>
+              </div>
+              <div class="card-title-c align-self-center">
+                <h5 class="title-c">ENQUIRE NOW</h5>
+              </div>
+            </div>
+          </div>
+          <div class="property-summary">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="title-box-d section-t4">
+                  <h3 class="title-d">Quick Summary</h3>
+                </div>
+              </div>
+            </div>
+            <div class="summary-list">
+              <ul class="list">
+                <li class="d-flex justify-content-between">
+                  <strong>Property ID:</strong>
+                  <span>{{object.prop_Id}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Location:</strong>
+                  <span>{{object.location}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Property Type:</strong>
+                  <span>{{object.prop_type}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Status:</strong>
+                  <span>{{object.status}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Area:</strong>
+                  <span>{{object.area}} ft
+                    <sup>2</sup>
+                  </span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Bedrooms:</strong>
+                  <span>{{object.Bedrooms}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Baths:</strong>
+                  <span>{{object.Bath}}</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Parking:</strong>
+                  <span>{{object.parking}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 col-lg-7 section-md-t3">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="title-box-d">
+                <h3 class="title-d">Property Description</h3>
+              </div>
+            </div>
+          </div>
+          <div class="property-description">
+            <p class="description color-text-a">
+              {{object.desc}}
+            </p>
+          </div>
+          <div class="row section-t3">
+            <div class="col-sm-12">
+              <div class="title-box-d">
+                <h3 class="title-d">Amenities</h3>
+              </div>
+            </div>
+          </div>
+          <div class="amenities-list color-text-a">
+            <ul class="list-a no-margin">
+            {% if object.amen1 %}<li>{{object.amen1}}</li>{% endif %}
+            {% if object.amen2 %}<li>{{object.amen2}}</li>{% endif %}
+            {% if object.amen3 %}<li>{{object.amen3}}</li>{% endif %}
+            {% if object.amen4 %}<li>{{object.amen4}}</li>{% endif %}
+            {% if object.amen5 %}<li>{{object.amen5}}</li>{% endif %}
+            {% if object.amen6 %}<li>{{object.amen6}}</li>{% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--Floor Plans-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title-box-d section-t4">
+          <h3 class="title-d">Floor Plans</h3>
+        </div>
+      </div>
+    </div>
+  <!--Floor Plan arrange-->
+    <div class="container">
+        <div class="row">
+          {% if object.floor_plan4 and object.floor_plan3 and object.floor_plan2 and object.floor_plan1  %}
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan1.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan1.url}}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan2.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan2.url}}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan3.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan3.url}}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan4.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan4.url}}" alt="" class="img-fluid">
+          </div>
+
+          {% elif object.floor_plan3 and object.floor_plan2 and object.floor_plan1  %}
+          <div class="col-12 p-2">
+            <a href="{{object.floor_plan1.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan1.url}}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan2.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan2.url}}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan3.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan3.url}}" alt="" class="img-fluid">
+          </div>
+
+          {% elif object.floor_plan2 and object.floor_plan1  %}
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan1.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan1.url}}" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-6 p-2">
+            <a href="{{object.floor_plan2.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan2.url}}" alt="" class="img-fluid">
+          </div>
+
+          {% elif object.floor_plan1  %}
+          <div class="col-12 p-2">
+            <a href="{{object.floor_plan1.url}}" data-lightbox="home-images">
+            <img src="{{object.floor_plan1.url}}" alt="" class="img-fluid">
+          </div>
+
+          {% endif %}
+            </div>
+        </div>
+
+
+    <div class="col-md-10 offset-md-1">
+      <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
+            aria-controls="pills-video" aria-selected="true">Video</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
+            aria-selected="false">Ubication</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        
+      <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+        <iframe src="{{object.video_link}}" width="100%" height="460" frameborder="0"
+          webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+
+      <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+        <iframe src="{{object.map_link}}"
+          width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+      </div>
+<!--/ Property Single End /-->
+{% if reviews %}
+<div class="row">
+      <div class="col-sm-12">
+        <div class="title-box-d section-t4">
+          <h3 class="title-d">Comments</h3>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 offset-md-1 col-lg-10 offset-lg-1 pt-2">
+      
+    <div class="box-comments">
+      <ul class="list-comments">
+    {% for rev in reviews  %}
+        <li>
+              <div class="comment-avatar">
+                <img src="{{rev.img_disp.url}}" alt="">
+              </div>
+              <div class="comment-details">
+                <h4 class="comment-author">{{rev.name}}</h4>
+                <span>{{listing.name}}</span>
+                <p class="comment-description">
+                  {{rev.review}}
+                </p>
+              </div>
+        </li>
+    {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}
+</section>
+{%include 'partials/_enquiry.html'%}
+{% endblock content %}

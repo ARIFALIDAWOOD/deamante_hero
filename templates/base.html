@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link rel="icon" type="image/png" href="{% static 'img/logo.ico' %}">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/font-awesome/css/all.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+  <title>Deamante {% block title %}
+  {% endblock title %}</title>
+</head>
+
+<body>
+{% include "partials/_topbar.html" %}
+{% include 'partials/_search.html' %}
+{% include "partials/_navbar.html" %}
+
+{%block content%}
+
+
+{% endblock%}
+
+
+
+
+
+</body>
+
+{% include "partials/_footer.html" %}
+ <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %} "></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %} "></script>
+  <script src="{% static 'lib/popper/popper.min.js' %} "></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %} "></script>
+  <script src="{% static 'lib/easing/easing.min.js' %} "></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %} "></script>
+  <script src="{% static 'lib/scrollreveal/scrollreveal.min.js' %} "></script>
+  <script src="{% static 'js/lightbox.min.js' %} "></script>
+  <!-- Contact Form JavaScript File -->
+  <!--script src="{% static 'contactform/contactform.js' %} "></script-->
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %} "></script>
+  <script>
+  const date = new Date();
+  document.querySelector('.year').innerHTML = date.getFullYear();
+
+  setTimeout(function() {
+    $('#message').fadeOut('slow');
+  }, 3000);
+  </script>
+</html>
